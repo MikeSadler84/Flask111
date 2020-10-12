@@ -4,8 +4,13 @@
 from app import app
 
 @app.route('/')
-    
-def my_dict():
+
+def index():
+    return "Hello, World!" 
+
+@app.route('/aboutme')
+
+def about_dict():
     me_dict = {
         "First Name": "Mike",
         "Last Name": "Sadler",
