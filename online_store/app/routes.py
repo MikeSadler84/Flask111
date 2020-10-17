@@ -33,7 +33,7 @@ def delete_user():
     return results
 
 def create_user():
-    cursor = get_db().execute("INSERT into user values", ())
+    cursor = get_db().execute("INSERT into user values", ("Michelangelo", "Turtle", "Skateboarding"))
     results = cursor
     cursor.close()
     return results
@@ -88,8 +88,12 @@ def get_users():
     if "POST" in request.method:
         # create a new user
         create_user()
-        pass
+        
     if "PUT" in request.method:
         #update code goes here
         update_user()
+        pass
+    if "DELETE" in request.method:
+        #update code goes here
+        delete_user()
         pass
