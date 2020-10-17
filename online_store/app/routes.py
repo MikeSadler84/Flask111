@@ -20,23 +20,20 @@ def get_all_users():
     cursor.close()
     return results
 
-def update_user():
-    cursor = get_db().execute("UPDATE user", ())
-    results = cursor
+def update_user(to, string1, where, string2):
+    cursor = get_db().execute("UPDATE user"  + to + "=" + string1 + " where " + where + "=" + string2 + ";")
     cursor.close()
-    return results
+
 
 def delete_user():
     cursor = get_db().execute("DELETE FROM user", ())
-    results = cursor
     cursor.close()
-    return results
+
 
 def create_user():
     cursor = get_db().execute("INSERT into user values", ("Michelangelo", "Turtle", "Skateboarding"))
-    results = cursor
     cursor.close()
-    return results
+   
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -92,7 +89,7 @@ def get_users():
     if "PUT" in request.method:
         #update code goes here
         update_user()
-        pass
+        
     if "DELETE" in request.method:
         #update code goes here
         delete_user()
